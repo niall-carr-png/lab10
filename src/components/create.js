@@ -10,6 +10,7 @@ export class Create extends React.Component{
         this.onChangeBookTitle = this.onChangeBookTitle.bind(this);
         this.onChangeBookCover = this.onChangeBookCover.bind(this);
         this.onChangeBookAuthor = this.onChangeBookAuthor.bind(this);
+        
         this.state = {
             title:'',
             cover:'',

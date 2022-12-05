@@ -4,12 +4,31 @@ import axios from "axios";
 
 export class Read extends React.Component{
 
+   //Binds data to be reloaded
+    constructor(){
+        super();
+        this.ReloadData = this.ReloadData.bind(this);
+    }
+
+     //Tells read.js to reload data
+    ReloadData(){
+    axios.get('http://localhost:4000/api/books')
+        .then((response)=>{
+            this.setState({books:response.data})
+    })
+    .catch((error)=>{
+        /* Default error message */
+        console.log(error);
+    })
+
+    }
+
     /* Retrieving the JSON blob */
     componentDidMount() {
         axios.get('http://localhost:4000/api/books')
         .then((response)=>{
             this.setState({books:response.data})
-        })
+    })
     .catch((error)=>{
         /* Default error message */
         console.log(error);
@@ -69,7 +88,7 @@ export class Read extends React.Component{
             <div>
                 <h3>Hello from my Read component!</h3>
                 {/*JSON output in HTML*/}
-                <Books books={this.state.books}></Books>
+                <Books books={this.state.books} ReloadData={this.ReloadData}></Books>
             </div>
         );
     }

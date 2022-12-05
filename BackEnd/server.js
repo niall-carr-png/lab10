@@ -102,6 +102,7 @@ app.get('/api/books', (req, res)=>{
     })
 })
 
+//Defining parameters for JSON data
 app.get('/api/book/:id',(req,res)=>{
     console.log(req.params.id);
     bookModel.findById(req.params.id,(err,data)=>{
@@ -117,6 +118,17 @@ app.put('/api/book/:id',(req,res)=>{
         res.send(data);
     })
 })
+
+// Delete
+app.delete('/api/book/:id', (req, res)=>{
+    console.log("Deleting: "+req.params.id);
+
+    bookModel.deleteOne({_id:req.params.id}, (error,data)=>{
+        res.send(data);
+    })
+
+})
+
 
 //Message for running on terminal
 app.listen(port, () => {

@@ -5,7 +5,7 @@ import { BookItem } from "./bookitem";
 export class Books extends React.Component{
     render(){
             return this.props.books.map( (book)=>{
-                return <BookItem book={book} key={book._id}></BookItem>
+                return <BookItem book={book} key={book._id} ReloadData={this.props.ReloadData}></BookItem>
             }
             );
     }
