@@ -8,6 +8,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // Connects bodyParser to json
 app.use(bodyParser.json())
+const path = require('path');
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
 
 const cors = require('cors');
 
@@ -129,6 +133,10 @@ app.delete('/api/book/:id', (req, res)=>{
 
 })
 
+// Sends user to the right place when incorrect URL is typed
+app.get('*', (req,res) =>{
+    res.sendFile(path.join(__dirname+'/../build/index.html'));
+    });
 
 //Message for running on terminal
 app.listen(port, () => {
