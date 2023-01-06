@@ -1,11 +1,11 @@
 import React from "react";
 
 /* A text component at the bottom of the page */
-export class Footer extends React.Component{
+export class Footnote extends React.Component{
     render(){
         return(
             <div>
-                <h1>My Footer is another component</h1>
+                <h1>This is the bottom part</h1>
             </div>
         )
     }
